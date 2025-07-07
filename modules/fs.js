@@ -11,3 +11,11 @@ const path = require('path');
     //}
 // });
 
+// Criar arquivo
+fs.writeFile(path.join(__dirname, 'teste', 'teste.txt'), 'Hello node!', (error) => {
+    if (error) {
+        return console.log('Erro: ', error) 
+
+    }
+    console.log('Arquivo criado com sucesso');
+})
