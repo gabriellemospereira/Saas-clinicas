@@ -1,0 +1,22 @@
+{
+  "name": "curso-nodejs-dicasparadevs",
+  "version": "1.0.0",
+  "description": "curso de Node.js",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.1",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "mongodb": "^6.18.0",
+    "mongoose": "^8.17.1"
+  },
+  "keywords": []
+}
