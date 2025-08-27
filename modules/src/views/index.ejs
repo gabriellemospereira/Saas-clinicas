@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<%- include('./partials/head.ejs') %>
+
+<body>
+    <div class="contaniner">
+        <div class="content">
+
+             <h1 class="principal-title">Sistema Saúde Gestor</h1>
+            <h2 class="principal-title02">Tecnologia a serviço da saúde.</h2> 
+
+            <% if (users.length> 0) { %> <% users.forEach(user=> {%>                    
+
+                    <h3 class="title">
+                        <%= user.firstName %>
+                            <%= user.lastName%>
+                    </h3>
+
+                    <p>
+                        <%= user.email %>
+                    </p>
+
+                    <% }) %>
+                        <% } else {%>
+                            <p>Não há usuérios para exibir...</p>
+                            <% } %>
+        </div>
+    </div>
+</body>
+
+</html>

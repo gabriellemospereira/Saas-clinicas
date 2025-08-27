@@ -6,14 +6,23 @@ const connectToDatabase = require('./modules/src/database/connect');
 const app = express();
 const PORT = process.env.PORT || 8080;
 
+app.set('view engine', 'ejs');
+app.set("views", "modules/src/views");
+
+
+
 // Middlewares
 app.use(cors());
 app.use(express.json());
+
+
 app.use((req, res, next) => {
     console.groupCollapsed(`Request type: ${req.method}`);
     console.log(`Content-type:  ${req.headers["content-type"]}`);
     console.log(`Date: ${new Date()}`)
 })
+
+
 
 // Conectar ao banco (adicione esta função se não tiver)
 async function startServer() {
@@ -80,6 +89,8 @@ app.get("/users/:id", async (req, res) => {
     }
 });
 
+
+
 // Rota para criar usuário - JÁ ESTAVA CORRETA
 app.post("/users", async (req, res) => {
     try {
@@ -89,6 +100,13 @@ app.post("/users", async (req, res) => {
         res.status(500).send(error.message);
     }
 });
+
+app.get("/views/users", async (req, res) => {
+    const users = await UserModel.find({});
+
+    res.render("index", {users});
+})
+
 
 // Iniciar servidor
 startServer();

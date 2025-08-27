@@ -2,8 +2,13 @@ const dotenv = require('dotenv');
 const express = require('express');
 const mongoose = require('mongoose');
 
+
+
+
 const connectToDatabase = require('./modules/src/database/connect');
-const UserModel = require('./modules/src/database/models/user.model');
+const UserModel = require('./modules/models/user.model');
+
+
 
 dotenv.config();
 
@@ -11,6 +16,9 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 app.use(express.json()); // middleware para analisar JSON no corpo das requisições
+
+app.set('view engine', 'ejs');
+app.set("views", "modules/src/views");
 
 app.patch('/users/:id', async (req, res) => {
     try {
@@ -22,6 +30,13 @@ app.patch('/users/:id', async (req, res) => {
            res.status(500).send(error.message);
     }
 });
+
+
+app.get("/views/users", async (req, res) => {
+    const users = await UserModel.find({});
+    
+    res.render("index", {users});
+})
 
 // Rota para deletar usuário
 app.delete('/users/:id', async (req, res) => {
