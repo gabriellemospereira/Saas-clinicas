@@ -2,13 +2,10 @@
 <html lang="pt-br">
 
 <%- include('./partials/head.ejs') %>
-
 <body>
+    <%- include('./partials/navbar.ejs') %>
     <div class="contaniner">
         <div class="content">
-
-             <h1 class="principal-title">Sistema Saúde Gestor</h1>
-            <h2 class="principal-title02">Tecnologia a serviço da saúde.</h2> 
 
             <% if (users.length> 0) { %> <% users.forEach(user=> {%>                    
 
@@ -25,6 +22,8 @@
                         <% } else {%>
                             <p>Não há usuérios para exibir...</p>
                             <% } %>
+
+                 
         </div>
     </div>
 </body>
